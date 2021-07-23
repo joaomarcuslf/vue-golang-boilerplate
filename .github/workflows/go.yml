@@ -27,9 +27,7 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: ${{ matrix.go }}
-      - run: |
-          cd api
-          go version
+        run: go version
 
       - name: Install dependencies 👨🏻‍💻
         run: |
