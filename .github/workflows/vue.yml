@@ -23,9 +23,6 @@ jobs:
       - name: Checkout 🛎
         uses: actions/checkout@master
 
-      - name: Enter folder 👨🏻‍💻
-        run: cd client
-
       - name: Setup Node env 🏗
         uses: actions/setup-node@v2.1.5
         with:
@@ -34,7 +31,9 @@ jobs:
 
       - name: Get yarn cache directory path 🛠
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: |
+          cd client
+          echo "::set-output name=dir::$(yarn cache dir)"
 
       - name: Cache node_modules 📦
         uses: actions/cache@v2.1.4
@@ -46,10 +45,16 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies 👨🏻‍💻
-        run: yarn
+        run: |
+          cd client
+          yarn
 
       - name: Run linter 👀
-        run: yarn lint
+        run: |
+          cd client
+          yarn lint
 
       - name: Run tests 🧪
-        run: yarn test
+        run: |
+          cd client
+          yarn test
