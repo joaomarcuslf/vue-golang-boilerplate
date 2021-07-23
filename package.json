@@ -17,7 +17,7 @@
     "lint-staged": "^11.1.0"
   },
   "lint-staged": {
-    "*.{js,vue}": "eslint",
-    "*.{css,vue}": "stylelint"
+    "*.{js,vue}": "cd client && eslint",
+    "*.{css,vue}": "cd client && stylelint"
   }
 }
