@@ -28,7 +28,6 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           check-latest: true
-        run: node -v
 
       - name: Get yarn cache directory path 🛠
         id: yarn-cache-dir-path
