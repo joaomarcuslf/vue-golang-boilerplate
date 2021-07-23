@@ -37,7 +37,7 @@ jobs:
       - name: Run app 👀
         run: |
           cd api
-          go run *.go
+          go build *.go
 
       - name: Run tests 🧪
         run: |
