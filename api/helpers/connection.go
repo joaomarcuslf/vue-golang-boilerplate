@@ -1,4 +1,4 @@
-package helper
+package helpers
 
 import (
 	"context"
@@ -12,13 +12,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-// ConnectDB : This is helper function to connect mongoDB
-// If you want to export your function. You must to start upper case function name. Otherwise you won't see your function when you import that on other class.
-func ConnectDB() *mongo.Collection {
-
-	// Set client options
-	// clientOptions := options.Client().ApplyURI(os.Getenv("MONGO_URL"))
-
+func ConnectDB() *mongo.Database {
 	uri := fmt.Sprintf(
 		"mongodb://%s:%s@%s:%s/%s?authSource=admin&ssl=false&&authMechanism=SCRAM-SHA-256",
 		os.Getenv("MONGODB_USERNAME"),
@@ -28,10 +22,7 @@ func ConnectDB() *mongo.Collection {
 		os.Getenv("MONGODB_DATABASE"),
 	)
 
-	fmt.Println("MongoURL:", uri)
 	clientOptions := options.Client().ApplyURI(uri)
-
-	// Connect to MongoDB
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 
 	if err != nil {
@@ -40,29 +31,25 @@ func ConnectDB() *mongo.Collection {
 
 	fmt.Println("Connected to MongoDB!")
 
-	collection := client.Database("my_library_app").Collection("books")
+	collection := client.Database("my_library_app")
 
 	return collection
 }
 
-// ErrorResponse : This is error model.
 type ErrorResponse struct {
-	StatusCode   int    `json:"status"`
-	ErrorMessage string `json:"message"`
+	Status  int      `json:"status"`
+	Message string   `json:"message"`
+	Result  []string `json:"result"`
 }
 
-// GetError : This is helper function to prepare error model.
-// If you want to export your function. You must to start upper case function name. Otherwise you won't see your function when you import that on other class.
-func GetError(err error, w http.ResponseWriter) {
+func JSONError(err error, w http.ResponseWriter, status int) {
+	w.Header().Set("Content-Type", "application/json")
 
-	log.Fatal(err.Error())
 	var response = ErrorResponse{
-		ErrorMessage: err.Error(),
-		StatusCode:   http.StatusInternalServerError,
+		Message: err.Error(),
+		Status:  status,
 	}
 
-	message, _ := json.Marshal(response)
-
-	w.WriteHeader(response.StatusCode)
-	w.Write(message)
+	w.WriteHeader(response.Status)
+	json.NewEncoder(w).Encode(response)
 }

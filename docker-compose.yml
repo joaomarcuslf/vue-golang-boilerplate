@@ -20,8 +20,8 @@ services:
     command: air -c .air.toml
     volumes:
       - ./api/:/usr/app
-      - ./api/:/go/src/api
-      - ./api/:/usr/local/go/src/api
+      - ./api/:/go/src/my_library_app
+      - ./api/:/usr/local/go/src/my_library_app
     ports:
       - 5000:5000
     env_file:
