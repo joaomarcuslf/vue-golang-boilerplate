@@ -3,10 +3,8 @@ module github.com/joaomarcuslf/api
 go 1.16
 
 require (
-	github.com/cosmtrek/air v1.27.3 // indirect
-	github.com/creack/pty v1.1.13 // indirect
-	github.com/fatih/color v1.12.0 // indirect
-	github.com/mattn/go-isatty v0.0.13 // indirect
-	github.com/pelletier/go-toml v1.9.3 // indirect
-	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
+	github.com/gorilla/mux v1.8.0
+	go.mongodb.org/mongo-driver v1.7.0
+	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
+	gopkg.in/yaml.v2 v2.3.0 // indirect
 )
