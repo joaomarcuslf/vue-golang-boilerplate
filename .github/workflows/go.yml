@@ -30,15 +30,18 @@ jobs:
 
       - name: Install dependencies 👨🏻‍💻
         run: |
+          export GOPATH=./
           cd api
           go mod download
 
       - name: Run app 👀
         run: |
+          export GOPATH=./
           cd api
           go build *.go
 
       - name: Run tests 🧪
         run: |
+          export GOPATH=./
           cd api
           go test

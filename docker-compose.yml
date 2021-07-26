@@ -1,20 +1,20 @@
 version: "3.7"
 
 services:
-  # client:
-  #   build: ./client
-  #   command: npm run dev
-  #   volumes:
-  #     - ./client:/usr/app/
-  #     - /usr/app/node_modules
-  #   ports:
-  #     - "3000:3000"
-  #   env_file:
-  #     - ./.env.dev
-  #   environment:
-  #     PORT: 3000
-  #   depends_on:
-  #     - api
+  client:
+    build: ./client
+    command: npm run dev
+    volumes:
+      - ./client:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./.env.dev
+    environment:
+      PORT: 3000
+    depends_on:
+      - api
   api:
     build: ./api
     command: air -c .air.toml
