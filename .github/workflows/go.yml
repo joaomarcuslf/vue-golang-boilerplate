@@ -30,18 +30,18 @@ jobs:
 
       - name: Install dependencies 👨🏻‍💻
         run: |
-          pwd
+          export GOPATH=/home/runner/work/vue-golang-boilerplate/vue-golang-boilerplate
           cd api
           go mod download
 
       - name: Run app 👀
         run: |
-          pwd
+          export GOPATH=/home/runner/work/vue-golang-boilerplate/vue-golang-boilerplate
           cd api
           go build main.go
 
       - name: Run tests 🧪
         run: |
-          pwd
+          export GOPATH=/home/runner/work/vue-golang-boilerplate/vue-golang-boilerplate
           cd api
           go test
