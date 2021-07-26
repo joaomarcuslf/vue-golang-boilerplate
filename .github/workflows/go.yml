@@ -30,18 +30,18 @@ jobs:
 
       - name: Install dependencies 👨🏻‍💻
         run: |
-          echo pwd
+          pwd
           cd api
           go mod download
 
       - name: Run app 👀
         run: |
-          echo pwd
+          pwd
           cd api
           go build main.go
 
       - name: Run tests 🧪
         run: |
-          echo pwd
+          pwd
           cd api
           go test
