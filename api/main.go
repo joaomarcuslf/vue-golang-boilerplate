@@ -11,8 +11,8 @@ import (
 	"github.com/gorilla/mux"
 	"gopkg.in/mgo.v2/bson"
 
-	helpers "api/helpers"
-	"api/models"
+	helpers "my_library_app/helpers"
+	"my_library_app/models"
 )
 
 //Connection mongoDB with helper class

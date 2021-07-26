@@ -1,4 +1,4 @@
-module github.com/joaomarcuslf/api
+module my_library_app
 
 go 1.16
 
